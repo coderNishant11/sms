@@ -1,10 +1,12 @@
 package com.one2one.sms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,9 +14,9 @@ import java.util.Date;
 @Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String studentId;
 
     @Column(name = "st_name", length = 100, nullable=false)
     private String stName;
@@ -35,6 +37,10 @@ public class Student {
     @ManyToOne
     @JoinColumn(name="standard_id",nullable = false)
     private ClassStandard standard;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", cascade=CascadeType.ALL,orphanRemoval = true)
+    private List<Marksheet> markSheets;
 
 
 

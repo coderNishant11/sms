@@ -9,8 +9,10 @@ import com.one2one.sms.repository.ClassStandardRepository;
 import com.one2one.sms.repository.SubjectRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,6 +27,10 @@ public class ClassStandardService {
     }
 
     public ClassStandard addClassStand(ClassDto classDto) {
+       // String string = UUID.randomUUID().toString();
+        String classId = Arrays.stream( UUID.randomUUID().toString().split("-")).map(e -> e).collect(Collectors.joining()).substring(0, 7)+ "-" + classDto.getClassName();
+      //  String sub = collectId.substring(0, 7);
+      //  String classId = subId + "-" + classDto.getClassName();
 
         Set<String> subjects = classDto.getSubjects();
 
@@ -33,6 +39,7 @@ public class ClassStandardService {
         )).collect(Collectors.toSet());
 
         ClassStandard classStandard = new ClassStandard();
+        classStandard.setStandardId(classId);
         classStandard.setClassName(classDto.getClassName());
         classStandard.setSubjects(collect);
 
@@ -76,3 +83,4 @@ public class ClassStandardService {
         classStandardRepository.deleteById(classId);
     }
 }
+

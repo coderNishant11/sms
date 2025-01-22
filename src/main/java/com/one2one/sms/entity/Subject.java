@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+
 import java.util.Set;
 
 @Getter
@@ -14,15 +14,17 @@ import java.util.Set;
 @Table(name = "subject")
 public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String subjectId;
 
     @Column(name = "subject_name", nullable = false, unique = true, length = 100)
     private String subjectName;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "subjects")
-    public Set<ClassStandard> classes;
+    private Set<ClassStandard> classes;
 
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    private Set<Marksheet> markSheets;
 }

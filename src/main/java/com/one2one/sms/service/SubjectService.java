@@ -7,9 +7,8 @@ import com.one2one.sms.repository.ClassStandardRepository;
 import com.one2one.sms.repository.SubjectRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SubjectService {
@@ -23,6 +22,11 @@ public class SubjectService {
     }
 
     public Subject addSubject(String subjectName) {
+        String string = UUID.randomUUID().toString();
+        String collect = Arrays.stream(string.split("-")).map(e -> e).collect(Collectors.joining());
+        String sub = collect.substring(0, 7);
+        String subjectId = sub + "-" + subjectName;
+
 
         Optional<Subject> bySubjectName = subjectRepository.findBySubjectName(subjectName);
         if(bySubjectName.isPresent()){
@@ -30,6 +34,7 @@ public class SubjectService {
         }
 
         Subject subject = new Subject();
+        subject.setSubjectId(subjectId);
         subject.setSubjectName(subjectName);
 
         Subject save = subjectRepository.save(subject);
