@@ -28,7 +28,7 @@ public class Student {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "d_o_b", nullable = false)
-    private Date dOB;
+    private Date dateOfBirth;
 
     @Column(name="address", nullable = false)
     private String address;

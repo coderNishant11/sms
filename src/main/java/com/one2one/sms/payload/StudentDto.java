@@ -1,5 +1,6 @@
 package com.one2one.sms.payload;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
@@ -24,9 +25,11 @@ public class StudentDto {
 
     @Email(message = "Please provide a valid email address")
     private String email;
+    @JsonProperty("dOB1")
+    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Date of Birth should be in yyyy-MM-dd format")
+    private String dOB1;
 
-    @Past(message = "Date of birth must be in the past")
-    private Date dOB;
+
 
     @Size(max = 100, message = "Address should not exceed 100 characters")
     private String address;
