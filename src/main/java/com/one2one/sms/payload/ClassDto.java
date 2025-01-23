@@ -14,5 +14,7 @@ public class ClassDto {
 
     private String className;
 
+    private String stream;
+
     private Set<String> subjects;
 }

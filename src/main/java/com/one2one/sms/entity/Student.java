@@ -14,7 +14,6 @@ import java.util.List;
 @Table(name = "student")
 public class Student {
     @Id
-
     @Column(name = "id", nullable = false)
     private String studentId;
 
@@ -40,7 +39,7 @@ public class Student {
 
     @JsonIgnore
     @OneToMany(mappedBy = "student", cascade=CascadeType.ALL,orphanRemoval = true)
-    private List<Marksheet> markSheets;
+    private List<MarkSheet> markSheets;
 
 
 

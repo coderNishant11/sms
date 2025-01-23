@@ -1,6 +1,7 @@
 package com.one2one.sms.service;
 
 import com.one2one.sms.entity.Student;
+import com.one2one.sms.payload.StudentDto;
 import com.one2one.sms.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,10 @@ public class StudentService {
     }
 
 
-    public Student addStudent(Student student){
-        String studentId = Arrays.stream( UUID.randomUUID().toString().split("-")).map(e -> e).collect(Collectors.joining()).substring(0, 7)+ "-" + student.getStudentName();
+    public Student addStudent(StudentDto studentDto){
+        String studentId = Arrays.stream( UUID.randomUUID().toString().split("-")).map(e -> e).collect(Collectors.joining()).substring(0, 7)+ "-" + studentDto.getStName();
+
+        return null;
 
     }
 }

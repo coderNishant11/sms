@@ -44,6 +44,15 @@ public class SubjectService {
 
     }
 
+    public List<Subject> addAll(List<String> subjects){
+
+        for (String subject : subjects) {
+            addSubject(subject);
+        }
+
+        return getAll();
+    }
+
     public List<Subject> getAll() {
 
         List<Subject> all = subjectRepository.findAll();

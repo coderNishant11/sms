@@ -1,7 +1,9 @@
 package com.one2one.sms.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
@@ -9,12 +11,13 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "marksheet")
-public class Marksheet {
+public class MarkSheet {
     @Id
-
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String MarkSheetId;
 
     @ManyToOne
     @JoinColumn(name="student_id", nullable= false)
@@ -36,4 +39,6 @@ public class Marksheet {
     private String grade;
 
     private String remarks;
+
+    private Integer date;
 }

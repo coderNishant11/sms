@@ -41,6 +41,7 @@ public class ClassStandardService {
         ClassStandard classStandard = new ClassStandard();
         classStandard.setStandardId(classId);
         classStandard.setClassName(classDto.getClassName());
+        classStandard.setStream((classDto.getStream()));
         classStandard.setSubjects(collect);
 
         return classStandardRepository.save(classStandard);
@@ -81,6 +82,14 @@ public class ClassStandardService {
         );
 
         classStandardRepository.deleteById(classId);
+    }
+
+    public List<ClassStandard> addAllClass(List<ClassDto> classDtos) {
+        for(ClassDto classDto: classDtos){
+            addClassStand(classDto);
+        }
+
+        return getAllClass();
     }
 }
 

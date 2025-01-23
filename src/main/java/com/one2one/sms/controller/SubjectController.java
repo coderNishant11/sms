@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/subjects")
@@ -17,6 +18,15 @@ public class SubjectController {
 
     public SubjectController(SubjectService subjectService) {
         this.subjectService = subjectService;
+    }
+    
+    
+    
+    @PostMapping("/addAllSubjects")
+    public ResponseEntity<List<Subject>> addAllSubjects(@RequestBody List<String> subjects){
+        List<Subject> allSubjects = subjectService.addAll(subjects);
+
+        return new ResponseEntity<>(allSubjects, HttpStatus.CREATED);
     }
 
 

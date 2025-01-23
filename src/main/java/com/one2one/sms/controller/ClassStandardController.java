@@ -31,6 +31,12 @@ public class ClassStandardController {
        return new ResponseEntity<>(classStandard, HttpStatus.CREATED);
     }
 
+        @PostMapping("/addAll")
+    public ResponseEntity<List<ClassStandard>> addAllStandard(@RequestBody List<ClassDto> classDtos){
+       List<ClassStandard>allClasses=classStandardService.addAllClass(classDtos);
+
+       return new ResponseEntity<>(allClasses, HttpStatus.CREATED);
+    }
     @GetMapping
     public ResponseEntity<List<ClassStandard>> getAllClasses(){
       List<ClassStandard>  allClass = classStandardService.getAllClass();
