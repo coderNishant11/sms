@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface ClassStandardRepository extends JpaRepository<ClassStandard, Long> {
     Optional<ClassStandard> findByClassName(String standard);
+
+
 }

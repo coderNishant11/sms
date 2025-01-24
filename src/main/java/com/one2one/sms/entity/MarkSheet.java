@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "marksheet")
+@Table(name = "markSheet")
 public class MarkSheet {
     @Id
     @Column(name = "id", nullable = false)
@@ -40,5 +40,5 @@ public class MarkSheet {
 
     private String remarks;
 
-    private Integer date;
+    private String date;
 }
