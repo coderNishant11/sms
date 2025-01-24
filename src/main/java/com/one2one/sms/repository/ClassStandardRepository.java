@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface ClassStandardRepository extends JpaRepository<ClassStandard, Long> {
+public interface ClassStandardRepository extends JpaRepository<ClassStandard, String> {
     Optional<ClassStandard> findByClassName(String standard);
 
 

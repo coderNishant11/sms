@@ -54,7 +54,7 @@ public class ClassStandardService {
         return classStandardRepository.findAll();
     }
 
-    public ClassStandard updateClass(ClassDto classDto, Long classId) {
+    public ClassStandard updateClass(ClassDto classDto, String classId) {
 
         ClassStandard classStandard = classStandardRepository.findById(classId).orElseThrow(
                 () -> new ResourceNotFound("class is not available with this id")
@@ -75,7 +75,7 @@ public class ClassStandardService {
     }
 
 
-    public void deletaClass(Long classId) {
+    public void deleteClass(String classId) {
 
         classStandardRepository.findById(classId).orElseThrow(
                 ()->new ResourceNotFound("Class not available with this given id")

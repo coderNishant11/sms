@@ -84,4 +84,39 @@ private SubjectRepository subjectRepository;
 
         return byStudent;
     }
+
+    public List<MarkSheet> getALlByStudentAndClass(String studentId, String classId) {
+        Student student = studentRepository.findById(studentId).orElseThrow(
+                () -> new ResourceNotFound("Enter valid Student id")
+        );
+        ClassStandard classStandard = classStandardRepository.findById(classId).orElseThrow(
+                () -> new ResourceNotFound("Enter valid class id")
+        );
+
+        List<MarkSheet> allByStudentIdAndClassId = markSheetRepository.findAllByStudentIdAndClassId(studentId, classId);
+        if(allByStudentIdAndClassId.isEmpty()){
+            throw new ResourceNotFound("markSheet not available for given student and class");
+        }
+
+        return allByStudentIdAndClassId;
+
+    }
+
+    public MarkSheet updateMarkSheet(String markSheetId, double updatedMarks) {
+
+        MarkSheet markSheet = markSheetRepository.findById(markSheetId).orElseThrow(
+                () -> new ResourceNotFound("MarkSheet not available with given id")
+        );
+
+        markSheet.setMarksObtained(updatedMarks);
+      return  markSheetRepository.save(markSheet);
+
+
+    }
+
+    public void deleteMarkSheet(String markSheetId) {
+
+        markSheetRepository.deleteById(markSheetId);
+
+    }
 }

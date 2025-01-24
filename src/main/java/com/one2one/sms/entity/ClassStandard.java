@@ -27,6 +27,7 @@ public class ClassStandard {
 
     @Column(name="stream", nullable=false)
     private String stream;
+
     @JsonIgnore
     @OneToMany(mappedBy = "standard" , cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Student> students;

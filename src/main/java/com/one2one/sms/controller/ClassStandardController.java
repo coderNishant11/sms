@@ -46,16 +46,16 @@ public class ClassStandardController {
 
     @PutMapping
     public ResponseEntity<ClassStandard> updateClass(@RequestBody ClassDto classDto,
-                                                    @RequestParam Long classId ){
+                                                    @RequestParam String classId ){
        ClassStandard classStandard = classStandardService.updateClass(classDto, classId);
 
        return new ResponseEntity<>(classStandard, HttpStatus.OK);
     }
 
     @DeleteMapping
-    public ResponseEntity<String> deleteClass(@RequestParam Long classId){
-        classStandardService.deletaClass(classId);
+    public ResponseEntity<String> deleteClass(@RequestParam String classId){
+        classStandardService.deleteClass(classId);
 
-        return new ResponseEntity<>("Class deleted successfullly", HttpStatus.OK);
+        return new ResponseEntity<>("Class deleted successfully", HttpStatus.OK);
     }
 }
